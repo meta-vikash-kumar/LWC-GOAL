@@ -1,0 +1,33 @@
+<template>
+    <lightning-card variant="Narrow"  title="Add Member" icon-name="standard:contact">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </template>
+        <div class ="slds-m-around_small">
+            <lightning-input name="name" 
+                             value={name} 
+                             type="text" 
+                             label="Name" 
+                             onchange={handleChange}
+            ></lightning-input>
+            <lightning-combobox name="team"
+                                label="Team"
+                                value={team}
+                                placeholder="Select Team"
+                                options={options}
+                                onchange={handleSelectTeam}
+            ></lightning-combobox>
+            <lightning-input name="skills" 
+                             value={skills} 
+                             type="text" 
+                             label="Skills" 
+                             onchange={handleChange}
+            ></lightning-input>
+            <br/>
+            <lightning-button variant="brand" 
+                              label="Submit" 
+                              onclick={handleSubmit}
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>

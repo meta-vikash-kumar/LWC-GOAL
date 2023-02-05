@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Team List">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-m-around_medium">
+            <lightning-combobox name="team"
+                label="Team"
+                value={selectedTeam}
+                placeholder="Select Team"
+                options={teamOptions}
+                onchange={handleSelectTeam}
+            ></lightning-combobox>
+            <template if:true={teamList}>
+                <div class="slds-border_top"></div>
+                <template for:each={teamMembers} for:item="teamMember">
+                    <div key={teamMember.Id} class="slds-border_bottom">
+                        <p>Name: {teamMember.Name}</p>
+                        <p>Team: {teamMember.Team__r.Name}</p>
+                        <p>Skills: {teamMember.Skills__c}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
