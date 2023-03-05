@@ -16,7 +16,7 @@ public with sharing class CreateTeamMembers {
         return record.Id;
     }
 
-    @AuraEnabled(cacheable=false)
+    @AuraEnabled(cacheable=true)
     public static List<TeamMember__c> getTeamMembersByTeamId(Id teamId){
         try {
             String query = 'Select Id,Name,Skills__c,Team__r.Name from TeamMember__c ';
